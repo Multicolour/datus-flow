@@ -6,7 +6,7 @@ declare interface Model_Interface<T> {
    * (like PostgreSQL) then supply this
    * value to create this model under
    * that schema.
-   * @type {[type]}
+   * @type {string}
    */
   schema: string;
 

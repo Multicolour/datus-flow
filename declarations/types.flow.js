@@ -6,4 +6,10 @@ declare type AttributeType =
   /** Declared as an interger of size 32 */
   "int32" |
   /** Declared as an interger of size 64 */
-  "int64"
+  "int64" |
+  /** Declared as a date field */
+  "date" |
+  /** Declared as a time field */
+  "time" |
+  /** Declared as a datetime field (with timezone if supported) */
+  "datetime"

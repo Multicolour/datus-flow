@@ -14,7 +14,9 @@ declare type ColumnDefinition = {
   /**
    * Whether to index this column or not, if
    * the index is a string it should be a valid
-   * index type for the database technology.
+   * index type for the database technology, if
+   * the database technology doesn't support
+   * named indexes it will be set to true.
    */
   index: boolean | string;
 
