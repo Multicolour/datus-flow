@@ -21,7 +21,7 @@ declare class Datus {
    * to this instance of Datus.
    * @type {Array<Adapter>}
    */
-  adapters: Array<Adapter>;
+  adapters: Array<Adapter_Interface>;
 
   /**
    * Connect to each adapter and

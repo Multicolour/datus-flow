@@ -22,6 +22,18 @@ declare type Where_Operator =
 
 declare class Query {
   /**
+   * Flip the bits that extend a
+   * query to create an and/or
+   * query.
+   *
+   * These are getters but Flow
+   * doesn't support getters yet.
+   * @return {Query}
+   */
+  static and(): Query;
+  static or(): Query;
+
+  /**
    * Start a where query with a column,
    * value and optional operator.
    *
@@ -30,31 +42,7 @@ declare class Query {
    * @param {mixed} value to do comparison on.
    * @return {Query} query to continue the query on.
    */
-  where<T: Model_Interface>(column: $Keys<T.columns>, value: mixed, operator?: Where_Operator): Query<T>;
-
-  /**
-   * Continue a where query with a column,
-   * value and optional operator that must
-   * be truthy along with the previous .where()
-   *
-   * Default operator is directly equals (=).
-   * @param {<T.columns>} column to do query on.
-   * @param {mixed} value to do comparison on.
-   * @return {Query} query to continue the query on.
-   */
-  and_where<T: Model_Interface>(column: $Keys<T.columns>, value: mixed, operator?: Where_Operator): Query<T>;
-
-  /**
-   * Continue a where query with a column,
-   * value and optional operator that is
-   * optionally truthy along with the previous .where()
-   *
-   * Default operator is directly equals (=).
-   * @param {<T.columns>} column to do query on.
-   * @param {mixed} value to do comparison on.
-   * @return {Query} query to continue the query on.
-   */
-  or_where<T: Model_Interface>(column: $Keys<T.columns>, value: mixed, operator?: Where_Operator): Query<T>;
+  where(column: $Keys<T.columns>, value: mixed, operator?: Where_Operator): Query<T>;
 
   /**
    * Run a query where the comparison value
@@ -64,7 +52,8 @@ declare class Query {
    * ```
    * model
    *   .where("column", 1, ">=")
-   *   .and_where("column", 3, "<=")
+   *   .and
+   *   .where("column", 3, "<=")
    * ```
    * @param {$Keys<T.columns>} column to query.
    * @param {any} comparison_value to use as the value between left and right values.
@@ -72,8 +61,8 @@ declare class Query {
    * @param {any} right_value value to use on R side of comparison where V BETWEEN L AND R
    * @return {Query} query to continue the query on.
    */
-  between<T: Model_Interface>(column: $Keys<T.columns>, comparison_value: any, left_value: any, right_value: any): Query<T>;
+  between(column: $Keys<T.columns>, comparison_value: any, left_value: any, right_value: any): Query<T>;
 
 
-  then<T>(callback: (results: T) => void): Query;
+  then(callback: (results: T) => void): Query;
 }

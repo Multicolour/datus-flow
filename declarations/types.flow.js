@@ -12,4 +12,8 @@ declare type AttributeType =
   /** Declared as a time field */
   "time" |
   /** Declared as a datetime field (with timezone if supported) */
-  "datetime"
+  "datetime";
+
+// Simple aliases for validation.
+declare type EmailType = string;
+declare type TelephoneType = string;

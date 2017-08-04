@@ -6,7 +6,7 @@
  */
 declare type ColumnDefinition = {
   /** The type of the column to register to the table */
-  type: ColumnType;
+  type: AttributeType;
 
   /** The default value if the column value isn't present */
   defaultsTo: () => mixed;
